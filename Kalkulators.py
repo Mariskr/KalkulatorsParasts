@@ -1,6 +1,7 @@
 from ast import operator
 from tkinter import*
 from math import*
+from unittest import result
 mansLogs=Tk()
 mansLogs.title("Kalkulators")
 
@@ -15,7 +16,7 @@ def btnCommand(command):
     global num1
     global mathOp
     mathOp=command #+,-,*,/
-    num1=int(e.get())
+    num1=float(e.get())
     e.delete(0,END)
     return 0
 
@@ -31,7 +32,9 @@ def Equals():
         result=num1*num2
     elif mathOp=="/":
         result=num1/num2
-    else:
+    elif mathOp=="x²":
+        result=num1**2
+    else:    
         result=0
     e.delete(0,END)
     e.insert(0,str(result))
@@ -43,7 +46,6 @@ def Clear():
     mathOp=""
     return 0        
 
-
 def Sqrt():
     global operator
     global num1
@@ -53,24 +55,50 @@ def Sqrt():
     num1=sqrt(num1)
     e.delete(0,END)
     e.insert(0,num1)
+#def Kvdr():
+ #   global operator
+  #  global num1
+   # global mathOp
+    #num1=float(e.get()**2)
+    #e.delete(0,END)
+    #e.insert(0,num1)
+    #result
+def Punkt():
+    if e.get()==".":
+        pass
+    else:
+        e.insert(END,".")
+def Pi():
+    global operator
+    global num1
+    global mathOp
+    #mathOp=command
+    num1=pi(num1)
+    e.delete(0,END)
+    e.insert(0,num1)        
 
-btn0=Button(mansLogs, text="0", padx="40", pady="20",command = lambda:btnClick(0))
-btn1=Button(mansLogs, text="1", padx="40", pady="20",command = lambda:btnClick(1))
-btn2=Button(mansLogs, text="2", padx="40", pady="20",command = lambda:btnClick(2))
-btn3=Button(mansLogs, text="3", padx="40", pady="20",command = lambda:btnClick(3))
-btn4=Button(mansLogs, text="4", padx="40", pady="20",command = lambda:btnClick(4))
-btn5=Button(mansLogs, text="5", padx="40", pady="20",command = lambda:btnClick(5))
-btn6=Button(mansLogs, text="6", padx="40", pady="20",command = lambda:btnClick(6))
-btn7=Button(mansLogs, text="7", padx="40", pady="20",command = lambda:btnClick(7))
-btn8=Button(mansLogs, text="8", padx="40", pady="20",command = lambda:btnClick(8))
-btn9=Button(mansLogs, text="9", padx="40", pady="20",command = lambda:btnClick(9))
-btnAdd=Button(mansLogs, text="+", padx="40", pady="20",command = lambda:btnCommand("+"))
-btnSub=Button(mansLogs, text="-", padx="40", pady="20",command = lambda:btnCommand("-"))
-btnEquals=Button(mansLogs, text="=", padx="40", pady="20",command = Equals)
-btnDiv=Button(mansLogs, text="/", padx="40", pady="20",command = lambda:btnCommand("/"))
-btnReiz=Button(mansLogs, text="*", padx="40", pady="20",command = lambda:btnCommand("*"))
-btnClear=Button(mansLogs, text="c", padx="40", pady="20",command = Clear)
-btnSqrt=Button(mansLogs, text="√", padx="40", pady="20",command = Sqrt)
+    
+
+btn0=Button(mansLogs, text="0", padx="40", bd=20, pady="20", font=("Arial Black",20), command = lambda:btnClick(0))
+btn1=Button(mansLogs, text="1", padx="40", bd=20, pady="20", font=("Arial Black",20), command = lambda:btnClick(1))
+btn2=Button(mansLogs, text="2", padx="40", bd=20, pady="20", font=("Arial Black",20),command = lambda:btnClick(2))
+btn3=Button(mansLogs, text="3", padx="40", bd=20, pady="20", font=("Arial Black",20),command = lambda:btnClick(3))
+btn4=Button(mansLogs, text="4", padx="40", bd=20, pady="20", font=("Arial Black",20),command = lambda:btnClick(4))
+btn5=Button(mansLogs, text="5", padx="40", bd=20, pady="20", font=("Arial Black",20),command = lambda:btnClick(5))
+btn6=Button(mansLogs, text="6", padx="40", bd=20, pady="20", font=("Arial Black",20),command = lambda:btnClick(6))
+btn7=Button(mansLogs, text="7", padx="40", bd=20, pady="20", font=("Arial Black",20),command = lambda:btnClick(7))
+btn8=Button(mansLogs, text="8", padx="40", bd=20, pady="20", font=("Arial Black",20),command = lambda:btnClick(8))
+btn9=Button(mansLogs, text="9", padx="40", bd=20, pady="20", font=("Arial Black",20),command = lambda:btnClick(9))
+btnAdd=Button(mansLogs, text="+", padx="40", bd=20, pady="20", font=("Arial Black",20),command = lambda:btnCommand("+"))
+btnSub=Button(mansLogs, text="-", padx="40", bd=20, pady="20", font=("Arial Black",20),command = lambda:btnCommand("-"))
+btnEquals=Button(mansLogs, text="=", padx="40", bd=20, pady="20", font=("Arial Black",20),command = Equals)
+btnDiv=Button(mansLogs, text="/", padx="40", bd=20, pady="20", font=("Arial Black",20),command = lambda:btnCommand("/"))
+btnReiz=Button(mansLogs, text="*", padx="40", bd=20, pady="20", font=("Arial Black",20),command = lambda:btnCommand("*"))
+btnClear=Button(mansLogs, text="C", padx="40", bd=20, pady="20", font=("Arial Black",20),command = Clear)
+btnSqrt=Button(mansLogs, text="√", padx="40", bd=20, pady="20", font=("Arial Black",20),command = Sqrt)
+btnKvdr=Button(mansLogs, text="x²", padx="40", bd=20, pady="20", font=("Arial Black",20),command = lambda:btnCommand("x²"))
+btnPunkt=Button(mansLogs, text=".", padx="40", bd=20, pady="20", font=("Arial Black",20),command = Punkt)
+btnPi=Button(mansLogs, text="π", padx="40", bd=20, pady="20", font=("Arial Black",20),command = Pi)
 
 btn7.grid(row=1,column=0)
 btn8.grid(row=1,column=1)
@@ -89,9 +117,9 @@ btnReiz.grid(row=4,column=1)
 btnDiv.grid(row=4,column=2)
 btnClear.grid(row=4,column=3)
 btnSqrt.grid(row=5, column=0)
-e=Entry(mansLogs,width=15,font=("Arial Black",20))
+btnKvdr.grid(row=5, column=1)
+btnPunkt.grid(row=5, column=2)
+btnPi.grid(row=5, column=3)
+e=Entry(mansLogs,width=15, bd=20,font=("Arial Black",20))
 e.grid(row=0,column=0,columnspan=4)
-
-
-
 mansLogs.mainloop()
