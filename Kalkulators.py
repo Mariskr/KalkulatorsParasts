@@ -34,6 +34,8 @@ def Equals():
         result=num1/num2
     elif mathOp=="x²":
         result=num1**2
+    elif mathOp=="π":
+        result=3.14    
     else:    
         result=0
     e.delete(0,END)
@@ -55,6 +57,7 @@ def Sqrt():
     num1=sqrt(num1)
     e.delete(0,END)
     e.insert(0,num1)
+
 #def Kvdr():
  #   global operator
   #  global num1
@@ -63,21 +66,22 @@ def Sqrt():
     #e.delete(0,END)
     #e.insert(0,num1)
     #result
+
 def Punkt():
     if e.get()==".":
         pass
     else:
         e.insert(END,".")
-def Pi():
-    global operator
-    global num1
-    global mathOp
+        
+#def Pi():
+ #   global operator
+  #  global num1
+   # global mathOp
     #mathOp=command
-    num1=pi(num1)
-    e.delete(0,END)
-    e.insert(0,num1)        
-
-    
+    #num1=float(e.get())
+    #num1=pi(num1)
+    #e.delete(0,END)
+    #e.insert(0,num1)  
 
 btn0=Button(mansLogs, text="0", padx="40", bd=20, pady="20", font=("Arial Black",20), command = lambda:btnClick(0))
 btn1=Button(mansLogs, text="1", padx="40", bd=20, pady="20", font=("Arial Black",20), command = lambda:btnClick(1))
@@ -98,7 +102,7 @@ btnClear=Button(mansLogs, text="C", padx="40", bd=20, pady="20", font=("Arial Bl
 btnSqrt=Button(mansLogs, text="√", padx="40", bd=20, pady="20", font=("Arial Black",20),command = Sqrt)
 btnKvdr=Button(mansLogs, text="x²", padx="40", bd=20, pady="20", font=("Arial Black",20),command = lambda:btnCommand("x²"))
 btnPunkt=Button(mansLogs, text=".", padx="40", bd=20, pady="20", font=("Arial Black",20),command = Punkt)
-btnPi=Button(mansLogs, text="π", padx="40", bd=20, pady="20", font=("Arial Black",20),command = Pi)
+btnPi=Button(mansLogs, text="π", padx="40", bd=20, pady="20", font=("Arial Black",20),command = lambda:btnCommand("π"))
 
 btn7.grid(row=1,column=0)
 btn8.grid(row=1,column=1)
